@@ -174,57 +174,235 @@
         <div id="status" class="status"></div>
 
         <div class="info">
-            <strong>ℹ️ Información:</strong><br>
-            Los documentos se descargarán automáticamente en tu carpeta de descargas.
-            Cada dieta contiene un plan nutricional personalizado en formato Word (.docx).
+            <strong>📋 Información:</strong><br>
+            Los documentos se descargarán como archivos .doc con una tabla semanal completa:<br>
+            • <strong>Columnas:</strong> Lunes a Domingo<br>
+            • <strong>Filas:</strong> Desayuno, Almuerzo, Comida, Merienda, Cena<br>
+            • <strong>Formato:</strong> Compatible con Microsoft Word y LibreOffice
         </div>
     </div>
 
     <script>
-        // Plantillas de dietas
+        // Plantillas de dietas con plan semanal completo
         const dietTemplates = {
             1: {
                 title: "Dieta Mediterránea",
                 description: "Plan nutricional basado en la dieta mediterránea tradicional",
-                meals: {
-                    desayuno: "Tostada integral con aceite de oliva, tomate y jamón ibérico + Café o té",
-                    almuerzo: "Ensalada griega con aceitunas, queso feta y aceite de oliva",
-                    comida: "Pescado al horno con verduras mediterráneas + Arroz integral",
-                    merienda: "Yogur griego con nueces y miel",
-                    cena: "Crema de verduras + Tortilla de espinacas"
+                weeklyPlan: {
+                    "Lunes": {
+                        desayuno: "Tostada integral con aceite de oliva, tomate y jamón ibérico + Café",
+                        almuerzo: "Yogur griego con nueces",
+                        comida: "Paella valenciana + Ensalada mixta",
+                        merienda: "Frutas mediterráneas",
+                        cena: "Pescado al horno + Verduras asadas"
+                    },
+                    "Martes": {
+                        desayuno: "Cereales integrales con leche + Zumo de naranja",
+                        almuerzo: "Aceitunas y queso manchego",
+                        comida: "Gazpacho + Sardinas a la plancha + Pan integral",
+                        merienda: "Almendras y dátiles",
+                        cena: "Tortilla española + Ensalada verde"
+                    },
+                    "Miércoles": {
+                        desayuno: "Tostada con aguacate y huevo + Café",
+                        almuerzo: "Hummus con pan pita",
+                        comida: "Lentejas estofadas + Pescado blanco",
+                        merienda: "Yogur con miel",
+                        cena: "Crema de calabacín + Jamón serrano"
+                    },
+                    "Jueves": {
+                        desayuno: "Avena con frutas rojas + Té verde",
+                        almuerzo: "Bocadillo de atún",
+                        comida: "Arroz con verduras + Pollo al limón",
+                        merienda: "Higos secos y nueces",
+                        cena: "Ensalada griega + Pan integral"
+                    },
+                    "Viernes": {
+                        desayuno: "Batido de frutas + Tostada integral",
+                        almuerzo: "Queso fresco con tomate",
+                        comida: "Pasta con mariscos + Ensalada",
+                        merienda: "Uvas y almendras",
+                        cena: "Salmón a la plancha + Espárragos"
+                    },
+                    "Sábado": {
+                        desayuno: "Pancakes integrales + Miel",
+                        almuerzo: "Tapas variadas",
+                        comida: "Cordero asado + Patatas + Verduras",
+                        merienda: "Tarta de frutas",
+                        cena: "Caldo de verduras + Pescado al vapor"
+                    },
+                    "Domingo": {
+                        desayuno: "Tostada francesa + Café con leche",
+                        almuerzo: "Frutos secos variados",
+                        comida: "Cocido madrileño + Pan",
+                        merienda: "Helado de frutas",
+                        cena: "Ensalada de pulpo + Pan tostado"
+                    }
                 }
             },
             2: {
                 title: "Dieta Proteica",
                 description: "Plan alto en proteínas para desarrollo muscular",
-                meals: {
-                    desayuno: "Huevos revueltos con espinacas + Batido de proteínas",
-                    almuerzo: "Pechuga de pollo a la plancha + Ensalada verde",
-                    comida: "Salmón al vapor + Brócoli + Quinoa",
-                    merienda: "Requesón con almendras",
-                    cena: "Pavo a la plancha + Espárragos verdes"
+                weeklyPlan: {
+                    "Lunes": {
+                        desayuno: "Huevos revueltos (3) + Espinacas + Batido proteico",
+                        almuerzo: "Pechuga de pollo 100g + Ensalada",
+                        comida: "Salmón 150g + Brócoli + Quinoa",
+                        merienda: "Requesón 200g + Almendras",
+                        cena: "Pavo 150g + Espárragos verdes"
+                    },
+                    "Martes": {
+                        desayuno: "Tortilla de claras (4) + Avena + Proteína",
+                        almuerzo: "Atún 100g + Lechuga",
+                        comida: "Ternera 150g + Judías verdes + Arroz integral",
+                        merienda: "Yogur griego 200g + Nueces",
+                        cena: "Merluza 150g + Coliflor al vapor"
+                    },
+                    "Miércoles": {
+                        desayuno: "Batido proteico + Plátano + Avena",
+                        almuerzo: "Sardinas 100g + Tomate",
+                        comida: "Pollo 150g + Lentejas + Espinacas",
+                        merienda: "Queso cottage 200g + Pipas",
+                        cena: "Lubina 150g + Calabacín a la plancha"
+                    },
+                    "Jueves": {
+                        desayuno: "Huevos cocidos (3) + Pan integral + Proteína",
+                        almuerzo: "Jamón serrano 100g + Pepino",
+                        comida: "Cordero 150g + Garbanzos + Acelgas",
+                        merienda: "Batido de caseína + Frutos secos",
+                        cena: "Bacalao 150g + Pimientos asados"
+                    },
+                    "Viernes": {
+                        desayuno: "Pancakes proteicos + Claras + Frutas",
+                        almuerzo: "Pechuga pavo 100g + Rúcula",
+                        comida: "Atún 150g + Alubias + Cebolla",
+                        merienda: "Requesón 200g + Semillas",
+                        cena: "Dorada 150g + Berenjena asada"
+                    },
+                    "Sábado": {
+                        desayuno: "Huevos al plato (3) + Jamón + Batido",
+                        almuerzo: "Salmón ahumado 100g + Aguacate",
+                        comida: "Cerdo 150g + Judías pintas + Col",
+                        merienda: "Yogur proteico + Cacahuetes",
+                        cena: "Rape 150g + Champiñones salteados"
+                    },
+                    "Domingo": {
+                        desayuno: "Tortilla proteica + Pavo + Batido",
+                        almuerzo: "Boquerones 100g + Pimiento",
+                        comida: "Conejo 150g + Habas + Zanahoria",
+                        merienda: "Queso fresco 200g + Almendras",
+                        cena: "Rodaballo 150g + Alcachofas"
+                    }
                 }
             },
             3: {
                 title: "Dieta Vegana",
                 description: "Plan nutricional 100% vegetal equilibrado",
-                meals: {
-                    desayuno: "Bowl de avena con frutas del bosque y semillas de chía",
-                    almuerzo: "Hummus con crudités de verduras",
-                    comida: "Curry de lentejas con verduras + Arroz basmati",
-                    merienda: "Smoothie verde con espinacas, plátano y leche de almendras",
-                    cena: "Tofu salteado con verduras + Quinoa"
+                weeklyPlan: {
+                    "Lunes": {
+                        desayuno: "Bowl de avena + Frutos rojos + Semillas de chía",
+                        almuerzo: "Hummus + Crudités de verduras",
+                        comida: "Curry de lentejas + Arroz basmati + Espinacas",
+                        merienda: "Smoothie verde + Plátano + Espinacas",
+                        cena: "Tofu salteado + Verduras + Quinoa"
+                    },
+                    "Martes": {
+                        desayuno: "Tostada aguacate + Tomate + Semillas",
+                        almuerzo: "Frutos secos variados + Frutas",
+                        comida: "Garbanzos estofados + Acelgas + Pan integral",
+                        merienda: "Batido de proteína vegetal + Mango",
+                        cena: "Ensalada de quinoa + Verduras asadas"
+                    },
+                    "Miércoles": {
+                        desayuno: "Chia pudding + Coco + Arándanos",
+                        almuerzo: "Crackers integrales + Paté vegetal",
+                        comida: "Alubias rojas + Arroz + Pimientos",
+                        merienda: "Zumo verde + Apio + Manzana",
+                        cena: "Tempeh marinado + Brócoli + Boniato"
+                    },
+                    "Jueves": {
+                        desayuno: "Granola casera + Leche de almendras + Frutas",
+                        almuerzo: "Edamame + Zanahorias baby",
+                        comida: "Lentejas rojas + Calabaza + Cuscús",
+                        merienda: "Dátiles rellenos + Nueces",
+                        cena: "Hamburguesa de legumbres + Ensalada"
+                    },
+                    "Viernes": {
+                        desayuno: "Batido de proteína + Espinacas + Piña",
+                        almuerzo: "Tapenade de aceitunas + Pan tostado",
+                        comida: "Judías pintas + Verduras + Arroz integral",
+                        merienda: "Smoothie bowl + Granola + Frutas",
+                        cena: "Seitan al ajillo + Champiñones + Patatas"
+                    },
+                    "Sábado": {
+                        desayuno: "Pancakes de avena + Sirope de arce + Fresas",
+                        almuerzo: "Aguacate + Tomates cherry + Sal marina",
+                        comida: "Paella vegana + Verduras + Azafrán",
+                        merienda: "Helado vegano + Nueces + Cacao",
+                        cena: "Crema de calabacín + Semillas + Pan"
+                    },
+                    "Domingo": {
+                        desayuno: "Tostada PB + Plátano + Semillas de lino",
+                        almuerzo: "Mix de frutos secos + Frutas deshidratadas",
+                        comida: "Lasaña vegana + Ensalada verde",
+                        merienda: "Batido de cacao + Leche de avena",
+                        cena: "Sopa de miso + Verduras + Tofu"
+                    }
                 }
             },
             4: {
                 title: "Dieta Detox",
-                description: "Plan depurativo y antioxidante",
-                meals: {
-                    desayuno: "Zumo verde + Chia pudding con frutas",
-                    almuerzo: "Ensalada detox con remolacha, zanahoria y jengibre",
-                    comida: "Caldo depurativo + Verduras al vapor",
-                    merienda: "Infusión de té verde + Handful de arándanos",
-                    cena: "Crema de calabacín + Pescado blanco al vapor"
+                description: "Plan depurativo y antioxidante de 7 días",
+                weeklyPlan: {
+                    "Lunes": {
+                        desayuno: "Zumo verde + Apio + Pepino + Manzana",
+                        almuerzo: "Té verde + Arándanos naturales",
+                        comida: "Caldo depurativo + Verduras al vapor",
+                        merienda: "Infusión diente de león + Limón",
+                        cena: "Crema de calabacín + Jengibre"
+                    },
+                    "Martes": {
+                        desayuno: "Batido detox + Espinacas + Piña + Jengibre",
+                        almuerzo: "Agua de coco + Semillas de chía",
+                        comida: "Sopa de miso + Verduras + Algas",
+                        merienda: "Té blanco + Limón + Stevia",
+                        cena: "Pescado blanco + Espárragos + Limón"
+                    },
+                    "Miércoles": {
+                        desayuno: "Zumo de remolacha + Zanahoria + Jengibre",
+                        almuerzo: "Ensalada detox + Rúcula + Pomelo",
+                        comida: "Quinoa + Verduras depurativas + Cúrcuma",
+                        merienda: "Infusión de cardo mariano",
+                        cena: "Caldo de verduras + Alcachofas"
+                    },
+                    "Jueves": {
+                        desayuno: "Smoothie antioxidante + Frutos rojos + Espinacas",
+                        almuerzo: "Té verde matcha + Limón",
+                        comida: "Arroz integral + Verduras + Cúrcuma",
+                        merienda: "Agua con limón + Pepino + Menta",
+                        cena: "Salmón + Brócoli + Ajo"
+                    },
+                    "Viernes": {
+                        desayuno: "Zumo de apio + Pepino + Limón + Perejil",
+                        almuerzo: "Ensalada de germinados + Aguacate",
+                        comida: "Lentejas rojas + Verduras + Jengibre",
+                        merienda: "Té de hierbas + Miel cruda",
+                        cena: "Merluza + Espinacas + Limón"
+                    },
+                    "Sábado": {
+                        desayuno: "Batido verde + Kale + Manzana + Limón",
+                        almuerzo: "Zumo de zanahoria + Jengibre",
+                        comida: "Verduras al wok + Tofu + Cúrcuma",
+                        merienda: "Infusión de cola de caballo",
+                        cena: "Caldo de huesos + Verduras"
+                    },
+                    "Domingo": {
+                        desayuno: "Zumo de granada + Arándanos + Limón",
+                        almuerzo: "Ensalada de rúcula + Semillas",
+                        comida: "Calabaza asada + Quinoa + Hierbas",
+                        merienda: "Té verde + Menta + Stevia",
+                        cena: "Pescado al vapor + Verduras depurativas"
+                    }
                 }
             }
         };
@@ -252,146 +430,111 @@
                 day: 'numeric'
             });
 
-            return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-    <w:body>
-        <w:p>
-            <w:pPr>
-                <w:jc w:val="center"/>
-                <w:rPr>
-                    <w:b/>
-                    <w:sz w:val="32"/>
-                </w:rPr>
-            </w:pPr>
-            <w:r>
-                <w:rPr>
-                    <w:b/>
-                    <w:sz w:val="32"/>
-                </w:rPr>
-                <w:t>${diet.title}</w:t>
-            </w:r>
-        </w:p>
-        
-        <w:p>
-            <w:pPr>
-                <w:jc w:val="center"/>
-            </w:pPr>
-            <w:r>
-                <w:t>Generado el: ${currentDate}</w:t>
-            </w:r>
-        </w:p>
-        
-        <w:p><w:r><w:t></w:t></w:r></w:p>
-        
-        <w:p>
-            <w:pPr>
-                <w:rPr>
-                    <w:b/>
-                    <w:sz w:val="24"/>
-                </w:rPr>
-            </w:pPr>
-            <w:r>
-                <w:rPr>
-                    <w:b/>
-                    <w:sz w:val="24"/>
-                </w:rPr>
-                <w:t>Descripción:</w:t>
-            </w:r>
-        </w:p>
-        
-        <w:p>
-            <w:r>
-                <w:t>${diet.description}</w:t>
-            </w:r>
-        </w:p>
-        
-        <w:p><w:r><w:t></w:t></w:r></w:p>
-        
-        <w:p>
-            <w:pPr>
-                <w:rPr>
-                    <w:b/>
-                    <w:sz w:val="24"/>
-                </w:rPr>
-            </w:pPr>
-            <w:r>
-                <w:rPr>
-                    <w:b/>
-                    <w:sz w:val="24"/>
-                </w:rPr>
-                <w:t>Plan de Comidas:</w:t>
-            </w:r>
-        </w:p>
-        
-        ${Object.entries(diet.meals).map(([meal, description]) => `
-        <w:p>
-            <w:pPr>
-                <w:rPr>
-                    <w:b/>
-                </w:rPr>
-            </w:pPr>
-            <w:r>
-                <w:rPr>
-                    <w:b/>
-                </w:rPr>
-                <w:t>${meal.charAt(0).toUpperCase() + meal.slice(1)}:</w:t>
-            </w:r>
-        </w:p>
-        <w:p>
-            <w:r>
-                <w:t>${description}</w:t>
-            </w:r>
-        </w:p>
-        <w:p><w:r><w:t></w:t></w:r></w:p>
-        `).join('')}
-        
-        <w:p>
-            <w:pPr>
-                <w:rPr>
-                    <w:i/>
-                </w:rPr>
-            </w:pPr>
-            <w:r>
-                <w:rPr>
-                    <w:i/>
-                </w:rPr>
-                <w:t>Nota: Consulte con un profesional de la salud antes de comenzar cualquier plan dietético.</w:t>
-            </w:r>
-        </w:p>
-    </w:body>
-</w:document>`;
+            const days = Object.keys(diet.weeklyPlan);
+            const meals = ['desayuno', 'almuerzo', 'comida', 'merienda', 'cena'];
+            const mealNames = {
+                desayuno: 'Desayuno',
+                almuerzo: 'Almuerzo',
+                comida: 'Comida',
+                merienda: 'Merienda',
+                cena: 'Cena'
+            };
+
+            // Crear HTML con tabla para exportar a Word
+            let tableHTML = `
+                <div style="font-family: Arial, sans-serif; margin: 20px;">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <h1 style="color: #2c3e50; font-size: 28px; margin-bottom: 10px;">${diet.title}</h1>
+                        <p style="color: #7f8c8d; font-size: 14px;">Generado el: ${currentDate}</p>
+                        <p style="color: #34495e; font-size: 16px; margin-top: 15px;">${diet.description}</p>
+                    </div>
+                    
+                    <h2 style="color: #2c3e50; margin-bottom: 20px; text-align: center;">Plan Semanal de Alimentación</h2>
+                    
+                    <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 11px;">
+                        <thead>
+                            <tr style="background-color: #3498db; color: white;">
+                                <th style="border: 2px solid #2980b9; padding: 12px 8px; text-align: center; font-weight: bold;">COMIDA / DÍA</th>
+                                ${days.map(day => `<th style="border: 2px solid #2980b9; padding: 12px 8px; text-align: center; font-weight: bold;">${day.toUpperCase()}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+            // Crear filas para cada comida
+            meals.forEach((meal, mealIndex) => {
+                const rowColor = mealIndex % 2 === 0 ? '#ecf0f1' : '#ffffff';
+                tableHTML += `
+                    <tr style="background-color: ${rowColor};">
+                        <td style="border: 1px solid #bdc3c7; padding: 10px 8px; font-weight: bold; background-color: #e8f4fd; text-align: center; vertical-align: middle;">
+                            ${mealNames[meal].toUpperCase()}
+                        </td>`;
+                
+                days.forEach(day => {
+                    const mealContent = diet.weeklyPlan[day][meal] || '';
+                    tableHTML += `
+                        <td style="border: 1px solid #bdc3c7; padding: 8px 6px; vertical-align: top; line-height: 1.4;">
+                            ${mealContent}
+                        </td>`;
+                });
+                
+                tableHTML += `</tr>`;
+            });
+
+            tableHTML += `
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 30px; padding: 15px; background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 5px;">
+                        <p style="color: #856404; font-style: italic; text-align: center; margin: 0; font-size: 12px;">
+                            <strong>Nota importante:</strong> Consulte con un profesional de la salud antes de comenzar cualquier plan dietético. 
+                            Este plan es una guía general y puede necesitar ajustes según sus necesidades individuales.
+                        </p>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: center; color: #7f8c8d; font-size: 10px;">
+                        <p>Plan nutricional generado automáticamente | ${new Date().getFullYear()}</p>
+                    </div>
+                </div>
+            `;
+
+            return tableHTML;
         }
 
         function downloadWordDocument(content, filename) {
-            // Crear un documento Word básico usando HTML
-            const htmlContent = `
+            // Crear documento HTML que Word puede abrir correctamente
+            const fullDocument = `
+                <!DOCTYPE html>
                 <html>
-                    <head>
-                        <meta charset="utf-8">
-                        <title>${filename}</title>
-                    </head>
-                    <body>
-                        ${content.replace(/<w:document[^>]*>|<\/w:document>|<w:body>|<\/w:body>/g, '')
-                               .replace(/<w:p[^>]*>/g, '<p>')
-                               .replace(/<\/w:p>/g, '</p>')
-                               .replace(/<w:r[^>]*>|<\/w:r>/g, '')
-                               .replace(/<w:t>/g, '').replace(/<\/w:t>/g, '')
-                               .replace(/<w:rPr[^>]*>.*?<\/w:rPr>/g, '')
-                               .replace(/<w:pPr[^>]*>.*?<\/w:pPr>/g, '')
-                               .replace(/<w:b\/>/g, '<strong>').replace(/<w:\/b>/g, '</strong>')
-                               .replace(/<w:i\/>/g, '<em>').replace(/<w:\/i>/g, '</em>')}
-                    </body>
+                <head>
+                    <meta charset="utf-8">
+                    <meta name="ProgId" content="Word.Document">
+                    <meta name="Generator" content="Microsoft Word">
+                    <meta name="Originator" content="Microsoft Word">
+                    <title>${filename}</title>
+                    <!--[if gte mso 9]>
+                    <xml>
+                        <w:WordDocument>
+                            <w:View>Print</w:View>
+                            <w:Zoom>90</w:Zoom>
+                            <w:DoNotOptimizeForBrowser/>
+                        </w:WordDocument>
+                    </xml>
+                    <![endif]-->
+                </head>
+                <body>
+                    ${content}
+                </body>
                 </html>
             `;
 
-            const blob = new Blob([htmlContent], { 
-                type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' 
+            const blob = new Blob([fullDocument], { 
+                type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
             });
             
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = filename;
+            a.download = filename.replace('.docx', '.doc'); // Cambiar extensión para mejor compatibilidad
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
